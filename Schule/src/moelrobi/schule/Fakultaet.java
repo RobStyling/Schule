@@ -7,10 +7,10 @@ package moelrobi.schule;
 public class Fakultaet {
 
 	public static void main(String[] args) {
-		System.out.println(berechneFakultaet(3));
+		System.out.println(berechneFakultaet(5555));
 	}
 	
-	public static int berechneFakultaet(int n) {
+	public static long berechneFakultaet(long n) {
 		if (n > 1) {
 			return(n * berechneFakultaet(n - 1));
 		}
