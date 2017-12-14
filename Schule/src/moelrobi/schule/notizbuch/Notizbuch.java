@@ -9,17 +9,6 @@ public class Notizbuch {
 	
 	public static void main(String[] args) {
 		notizAnlegen();
-		neueNotiz(0, "Hallo", "Eine sehr coole Notiz!");
-		neueNotiz(11, "Lmao", "Wunderschön");
-		neueNotiz(22, "SuperGeil", "Diese Notiz ist Super Geil!");
-		neueNotiz(283, "Test für die Suche", "Das ist eine Such Notiz");
-		neueNotiz(33, "lol", "lol");
-		letzteNotiz();
-		ersteNotiz();
-		getAllNotes();
-		searchNote(283);
-		deleteAllNotes();
-		searchNote(283);
 	}
 	
 	public static void neueNotiz(int newNum, String titel, String text) {
@@ -79,7 +68,50 @@ public class Notizbuch {
 		System.out.println("Bitte geben sie den Text ein!");
 		String text = sc.next();
 		notes.add(new Notiz(num, titel, text));
-		sc.close();
+	}
+	
+	public static void sucheGenau() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Bitte gebe einen genauen Titel ein.");
+		String x = sc.next();
+		ArrayList<Notiz> res = sucheNachExatemTitel(x);
+		for(int i = 0; i < res.size(); i++) {
+			System.out.println("Nummer: " + notes.get(i).getNummer());
+			System.out.println("Titel: " + notes.get(i).getTitel());
+			System.out.println("Text: " + notes.get(i).getText());
+		}
+	}
+	
+	public static void sucheUnGenau() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Bitte gebe einen ungenauen Titel ein.");
+		String x = sc.next();
+		ArrayList<Notiz> res = sucheNachUngefaehrenTitel(x);
+		for(int i = 0; i < res.size(); i++) {
+			System.out.println("Nummer: " + notes.get(i).getNummer());
+			System.out.println("Titel: " + notes.get(i).getTitel());
+			System.out.println("Text: " + notes.get(i).getText());
+		}
+	}
+	
+	private static ArrayList<Notiz> sucheNachExatemTitel(String titel) {
+		ArrayList<Notiz> results = new ArrayList<Notiz>();
+		for(int i = 0; i < notes.size(); i++) {
+			if(notes.get(i).getTitel().equals(titel)) {
+				results.add(notes.get(i));
+			}
+		}
+		return results;
+	}
+	
+	private static ArrayList<Notiz> sucheNachUngefaehrenTitel(String titel) {
+		ArrayList<Notiz> results = new ArrayList<Notiz>();
+		for(int i = 0; i < notes.size(); i++) {
+			if(notes.get(i).getTitel().equalsIgnoreCase(titel)) {
+				results.add(notes.get(i));
+			}
+		}
+		return results;
 	}
 
 }
