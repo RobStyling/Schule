@@ -9,6 +9,7 @@ public class Notizbuch {
 	
 	public static void main(String[] args) {
 		notizAnlegen();
+		editNote();
 	}
 	
 	public static void neueNotiz(int newNum, String titel, String text) {
@@ -40,22 +41,53 @@ public class Notizbuch {
 	}
 	
 	public static void searchNote(int number) {
-		boolean s = search(number);
-		if(s == false) {
+		ArrayList<Notiz> s = search(number);
+		if(s.isEmpty()) {
 			System.out.println("Keine Resultate gefunden!");
 		}
-	}
-	
-	private static boolean search(int num) {
-		for(int i = 0; i < notes.size() - 1; i++) {
-			if(notes.get(i).getNummer() == num) {
+		else {
+			for(int i = 0; i < s.size(); i++) {
 				System.out.println("Nummer: " + notes.get(i).getNummer());
 				System.out.println("Titel: " + notes.get(i).getTitel());
 				System.out.println("Text: " + notes.get(i).getText());
-				return true;
 			}
 		}
-		return false;
+	}
+	
+	public static void editNote() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Bitte gebe die Nummer ein zum editieren!");
+		String x = sc.next();
+		int num = Integer.parseInt(x);
+		ArrayList<Notiz> res = search(num);
+		if(res.isEmpty()) {
+			System.out.println("Wir konnten keine Resultate finden.");
+		}
+		else {
+			for(int i = 0; i < res.size(); i++) {
+				String oldTitel = res.get(i).getTitel();
+				System.out.println("Gebe bitte eine neue Nummer für Notiz ein: " + oldTitel);
+				String xx = sc.next();
+				int nuum = Integer.parseInt(xx);
+				res.get(i).setNummer(nuum);
+				System.out.println("Gebe bitte einen neuen Titel für Notiz ein: " + oldTitel);
+				String newTitel = sc.next();
+				res.get(i).setTitel(newTitel);
+				System.out.println("Gebe bitte einen neuen Text für Notiz ein: " + oldTitel);
+				String newText = sc.next();
+				res.get(i).setText(newText);
+			}
+		}
+	}
+	
+	private static ArrayList<Notiz> search(int num) {
+		ArrayList<Notiz> searchNotes = new ArrayList<Notiz>();
+		for(int i = 0; i < notes.size(); i++) {
+			if(notes.get(i).getNummer() == num) {
+				searchNotes.add(notes.get(i));
+			}
+		}
+		return searchNotes;
 	}
 	
 	public static void notizAnlegen() {
