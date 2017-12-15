@@ -2,16 +2,20 @@ package moelrobi.schule.notizbuch;
 
 public class Notiz {
 	
+	//Objektvariablen
+	private String titel;
+	private String text;
+	private int nummer;
+	
+	//Konstruktor
 	public Notiz(int n, String Titel, String Text) {
 		this.titel = Titel;
 		this.text = Text;
 		this.nummer = n;
 	}
 	
-	private String titel;
-	private String text;
-	private int nummer;
 	
+	//Getter und Setter Methods
 	public String getTitel() {
 		return titel;
 	}

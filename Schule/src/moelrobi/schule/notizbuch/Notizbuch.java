@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Notizbuch {
 	
+	//Die ArrayListe.
 	public static ArrayList<Notiz> notes = new ArrayList<Notiz>();
 	
 	public static void main(String[] args) {
@@ -99,7 +100,7 @@ public class Notizbuch {
 		String titel = sc.next();
 		System.out.println("Bitte geben sie den Text ein!");
 		String text = sc.next();
-		notes.add(new Notiz(num, titel, text));
+		neueNotiz(num, titel, text);
 	}
 	
 	public static void sucheGenau() {
