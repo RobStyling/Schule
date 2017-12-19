@@ -48,9 +48,9 @@ public class Notizbuch {
 		}
 		else {
 			for(int i = 0; i < s.size(); i++) {
-				System.out.println("Nummer: " + notes.get(i).getNummer());
-				System.out.println("Titel: " + notes.get(i).getTitel());
-				System.out.println("Text: " + notes.get(i).getText());
+				System.out.println("Nummer: " + s.get(i).getNummer());
+				System.out.println("Titel: " + s.get(i).getTitel());
+				System.out.println("Text: " + s.get(i).getText());
 			}
 		}
 	}
@@ -67,14 +67,14 @@ public class Notizbuch {
 		else {
 			for(int i = 0; i < res.size(); i++) {
 				String oldTitel = res.get(i).getTitel();
-				System.out.println("Gebe bitte eine neue Nummer für Notiz ein: " + oldTitel);
+				System.out.println("Gebe bitte eine neue Nummer fÃ¼r Notiz ein: " + oldTitel);
 				String xx = sc.next();
 				int nuum = Integer.parseInt(xx);
 				res.get(i).setNummer(nuum);
-				System.out.println("Gebe bitte einen neuen Titel für Notiz ein: " + oldTitel);
+				System.out.println("Gebe bitte einen neuen Titel fÃ¼r Notiz ein: " + oldTitel);
 				String newTitel = sc.next();
 				res.get(i).setTitel(newTitel);
-				System.out.println("Gebe bitte einen neuen Text für Notiz ein: " + oldTitel);
+				System.out.println("Gebe bitte einen neuen Text fÃ¼r Notiz ein: " + oldTitel);
 				String newText = sc.next();
 				res.get(i).setText(newText);
 			}
@@ -109,9 +109,9 @@ public class Notizbuch {
 		String x = sc.next();
 		ArrayList<Notiz> res = sucheNachExatemTitel(x);
 		for(int i = 0; i < res.size(); i++) {
-			System.out.println("Nummer: " + notes.get(i).getNummer());
-			System.out.println("Titel: " + notes.get(i).getTitel());
-			System.out.println("Text: " + notes.get(i).getText());
+			System.out.println("Nummer: " + res.get(i).getNummer());
+			System.out.println("Titel: " + res.get(i).getTitel());
+			System.out.println("Text: " + res.get(i).getText());
 		}
 	}
 	
@@ -121,9 +121,9 @@ public class Notizbuch {
 		String x = sc.next();
 		ArrayList<Notiz> res = sucheNachUngefaehrenTitel(x);
 		for(int i = 0; i < res.size(); i++) {
-			System.out.println("Nummer: " + notes.get(i).getNummer());
-			System.out.println("Titel: " + notes.get(i).getTitel());
-			System.out.println("Text: " + notes.get(i).getText());
+			System.out.println("Nummer: " + res.get(i).getNummer());
+			System.out.println("Titel: " + res.get(i).getTitel());
+			System.out.println("Text: " + res.get(i).getText());
 		}
 	}
 	
